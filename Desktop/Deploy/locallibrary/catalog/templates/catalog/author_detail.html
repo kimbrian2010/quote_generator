@@ -1,0 +1,17 @@
+{%  extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author: {{author.first_name}} {{author.last_name}}</h1>
+  <hr>
+     {{author.date_of_birth}}-{{author.date_of_death}}
+        <br>
+        <br>
+        <p><strong>Books:</strong></p>
+          {% for copy in author.book_set.all %}
+             <!-- code to iterate across each copy/book of an author -->
+             <a href="{{copy.get_absolute_url}}">{{copy.title}}</a>
+             <p>{{copy.summary}}</p>
+          {% endfor %}
+
+
+{% endblock%}
